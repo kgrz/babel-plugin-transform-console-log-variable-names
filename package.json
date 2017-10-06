@@ -1,0 +1,16 @@
+{
+  "name": "y",
+  "version": "y",
+  "description": "Babel plugin to log the names of variables when used for debugging",
+  "main": "y",
+  "author": "Kashyap Kondamudi",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0"
+  },
+	"scripts": {
+		"debug": "babel-node --inspect test.js",
+		"test": "babel-node test.js"
+	}
+}
