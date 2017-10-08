@@ -1,5 +1,5 @@
 {
-  "name": "babel-transform-console-log-variable-names",
+  "name": "babel-plugin-transform-console-log-variable-names",
   "version": "0.0.1",
   "description": "Babel plugin to log the names of variables when used for debugging",
   "main": "index.js",
