@@ -32,3 +32,24 @@ a: 12
 a, b: 12 13
 a, b, c: 12, 13, 59
 ```
+
+Usage
+-----
+
+Install the module with:
+
+```
+npm install --save babel-plugin-transform-console-log-variable-names
+```
+
+Include it in your babel configuration either via `.babelrc` or webpack.
+Here's a `.babelrc` example:
+
+```json
+{
+	"presets": [...],
+	"plugins": [
+		"transform-console-log-variable-names"
+	]
+}
+```
