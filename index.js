@@ -1,8 +1,6 @@
 const get = require('lodash.get');
 const t = require('babel-types');
 
-let state = 0;
-
 // Counts the number of arguments to console.log that are variables.
 const countLabelArgumentsVisitor = {
 	Identifier: function (path, args) {

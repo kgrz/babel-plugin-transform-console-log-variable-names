@@ -6,13 +6,24 @@
   "author": "Kashyap Kondamudi",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
     "babel-types": "^6.26.0",
     "lodash.get": "^4.4.2"
   },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0"
+  },
+  "keywords": [ "babel plugin", "console.log" ],
   "scripts": {
     "debug": "babel-node --inspect test.js",
     "test": "babel-node test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/kgrz/babel-plugin-transform-console-log-variable-names/issues"
+  },
+  "files": [ "index.js" ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kgrz/babel-plugin-transform-console-log-variable-names.git"
   }
 }
