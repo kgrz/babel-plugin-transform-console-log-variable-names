@@ -1,16 +1,33 @@
 const get = require('lodash.get');
+const flatten = require('lodash.flattendeep');
 const t = require('babel-types');
 
 // Counts the number of arguments to console.log that are variables.
-const countLabelArgumentsVisitor = {
+const countIdentifiersVisitor = {
 	Identifier: function (path, args) {
 		const name = path.node.name;
 
 		if (name !== 'console' && name !== 'log') {
-			args.items.push(path.node.name);
+			args.state.identifierCount++;
 		}
 	}
 };
+
+const aggregateMemberNames = node => {
+	if (node.type === 'ThisExpression') {
+		return 'this';
+	}
+
+	if (node.type === 'Identifier') {
+		return node.name;
+	}
+
+	if (node.type === 'MemberExpression') {
+		const propertyName = node.property.name;
+
+		return [ aggregateMemberNames(node.object), propertyName ];
+	}
+}
 
 const transformer = function (babel) {
 	return {
@@ -20,11 +37,34 @@ const transformer = function (babel) {
 				const prop = get(path, 'node.callee.property.name')
 
 				if (obj === 'console' && prop === 'log') {
-					const argCount = path.node.arguments.length;
-					const items = [];
-					path.traverse(countLabelArgumentsVisitor, { items })
-					if (items.length === argCount) {
-						const names = path.node.arguments.map(node => node.name);
+					const args = path.node.arguments;
+					const argCount = args.length;
+
+					let state = {
+						identifierCount: 0
+					};
+
+					path.traverse(
+						countIdentifiersVisitor,
+						{ state }
+					);
+
+					const validArgs = args.filter(node => {
+						return t.isMemberExpression(node) || t.isIdentifier(node);
+					});
+
+					if (validArgs.length === argCount) {
+						const names = args.map(node => {
+							if (t.isIdentifier(node)) {
+								return node.name;
+							}
+
+							if (node.type === 'MemberExpression') {
+								const namesArray = flatten(aggregateMemberNames(node));
+								return namesArray.join('.');
+							}
+						});
+
 						const concated = `${names.join(', ')}: `;
 						path.node.arguments.unshift(t.stringLiteral(concated));
 					}
