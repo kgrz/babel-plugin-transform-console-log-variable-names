@@ -33,6 +33,8 @@ a, b: 12 13
 a, b, c: 12, 13, 59
 ```
 
+Checkout another plugin around `console.log` usage I wrote: https://github.com/kgrz/babel-plugin-console-groupify
+
 Usage
 -----
 
