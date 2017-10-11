@@ -14,15 +14,10 @@ const countIdentifiersVisitor = {
 };
 
 const aggregateMemberNames = node => {
-	if (node.type === 'ThisExpression') {
-		return 'this';
-	}
+	if (t.isThisExpression(node)) return 'this';
+	if (t.isIdentifier(node)) return node.name;
 
-	if (node.type === 'Identifier') {
-		return node.name;
-	}
-
-	if (node.type === 'MemberExpression') {
+	if (t.isMemberExpression(node)) {
 		const propertyName = node.property.name;
 
 		return [ aggregateMemberNames(node.object), propertyName ];
