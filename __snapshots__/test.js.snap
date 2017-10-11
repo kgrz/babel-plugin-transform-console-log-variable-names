@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds concatenated variable name as label to console.log argument 1`] = `
+"
+const a = 'wut';
+const b = 'wut again';
+const c = 'wut once again';
+console.log('a, b, c: ', a, b, c);"
+`;
+
+exports[`adds correct label when printing out instance properties 1`] = `
+"
+this.a = 'wut';
+console.log('this.a: ', this.a);"
+`;
+
+exports[`adds label when printing out functions 1`] = `
+"
+function a() {
+		console.log('hi');
+};
+console.log('a: ', a);"
+`;
+
+exports[`adds variable name as label to console.log argument 1`] = `
+"
+const a = 'wut';
+console.log('a: ', a);"
+`;
+
+exports[`does not add label if variables are not used 1`] = `
+"
+console.log('wut');"
+`;
+
+exports[`works inside class methods 1`] = `
+"
+class A {
+	componentWillReceiveProps(nextProps) {
+		console.log(\\"this.props: \\", this.props);
+		console.log(\\"nextProps: \\", nextProps);
+	}
+}"
+`;
+
+exports[`works when printing variables pointing to functions 1`] = `
+"
+const wut = function () {
+	console.log('hi');
+};
+console.log('wut: ', wut);"
+`;
+
+exports[`works when printing variables pointing to objects 1`] = `
+"
+const wut = { a: 1 };
+console.log(\\"wut: \\", wut);"
+`;
