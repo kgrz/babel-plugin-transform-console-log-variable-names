@@ -11,17 +11,24 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0"
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "jest": "^21.2.1"
   },
-  "keywords": [ "babel plugin", "console.log" ],
+  "keywords": [
+    "babel plugin",
+    "console.log"
+  ],
   "scripts": {
     "debug": "babel-node --inspect test.js",
-    "test": "babel-node test.js"
+    "test": "jest test.js"
   },
   "bugs": {
     "url": "https://github.com/kgrz/babel-plugin-transform-console-log-variable-names/issues"
   },
-  "files": [ "index.js" ],
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kgrz/babel-plugin-transform-console-log-variable-names.git"
