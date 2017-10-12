@@ -41,7 +41,7 @@ Usage
 Install the module with:
 
 ```
-npm install --save babel-plugin-transform-console-log-variable-names
+npm i -D babel-plugin-transform-console-log-variable-names
 ```
 
 Include it in your babel configuration either via `.babelrc` or webpack.
